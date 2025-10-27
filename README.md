@@ -35,6 +35,13 @@ end
 
 Run the `license_old.py` script to generate a License file, login to the web service of FortiGate and import this License file.
 
+Before running `license_old.py`, Crypto dependency should be installed:
+```
+perl -0777 -pe 's/from Crypto\.Cipher import AES/try:\n    from Crypto.Cipher import AES\nexcept ModuleNotFoundError:\n    from Cryptodome.Cipher import AES/s' -i "license_old.py"
+apt install python3-pycryptodome -y
+python3 license_old.py
+```
+
 The system will restart automatically. After the system starts up, you should be able to see some output on the FDS server, for example:
 
 ```
