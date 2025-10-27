@@ -122,12 +122,18 @@ Please see https://wzt.ac.cn/2024/04/02/fortigate_debug_env2/ for more details.
 
 ### VDOM license
 
-You need to install libssl-dev first.
+You need to install dependencies first.
+
+```
+apt install libssl-dev
+apt install gcc
+apt install zlib1g-dev
+```
 
 Compile: `gcc vdom.c -o vdom -lssl -lcrypto -lz`
 
-Run: `./vdom FGVMPG0000000000 15`
+Run: `./vdom FGVMPGXXXXXXXXXX 15`
 
-Import the license: `execute upd-vd-license xxx`
+Import the license in FortiGate-VM: `execute upd-vd-license XXXXX-XXXXX-XXXXX-X`
 
 If you see `Error: VDOM number (xxx) exceeds limit for this model` then your base license does not support too many vdoms.
